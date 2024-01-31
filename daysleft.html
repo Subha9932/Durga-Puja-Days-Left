@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days-Left</title>
+    <link rel="stylesheet" href="days.css">
+    <script src="days.js"></script>
+</head>
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="heading">
+                মা আসছে......
+            </div>
+            <div class="pujo">
+                পুজো শুরু হবে:- <div id="enddate">  09 October 2023 10:00 AM</div>
+            </div>
+            <div class="subheading">
+                অপেক্ষার আর মাত্র......
+            </div>
+            <div class="days">
+                <input type="text" id="days" readonly>
+                <label>  Days  </label>         
+                <input type="text" id="hour" readonly>
+                <label>Hours  </label> 
+                <input type="text" id="min"  readonly>
+                <label>Minitus</label>
+                <input type="text" id="sec"  readonly>
+                <label>Seconds</label>
+            </div>
+            <div id="current_date"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const enddate="09 October 2024 10:00 AM"
+document.getElementById("enddate").innerHTML=enddate;
+const inputs=document.getElementsByTagName("input");
+function clock(){
+    const end=new Date(enddate)
+    const start=new Date()
+    const diff=(end-start)/1000;
+    inputs[0].value=Math.floor(diff/3600/24);
+    inputs[1].value=Math.floor((diff/3600)%24);
+    inputs[2].value=Math.floor((diff/60)%60);
+    inputs[3].value=Math.floor((diff%60));
+}
+clock()
+setInterval(()=>{
+    clock()
+},1000);
+document.getElementById("current_date").innerHTML = " আজকের তারিক :-"+new Date().toLocaleDateString();
+    </script>
+</body>
+</html>
